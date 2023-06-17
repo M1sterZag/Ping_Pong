@@ -6,7 +6,7 @@ from config import *
 def start_config():
     red_platform = Platform(35, 10, 70, 5, RED)
     blue_platform = Platform(WIDTH - 10 - 35, 10, 70, 5, BLUE)
-    ball = Ball(WIDTH // 2, HEIGHT // 2, 10, 3, WHITE)
+    ball = Ball(WIDTH // 2, HEIGHT // 2, 10, 4, WHITE)
     platform_list = [red_platform, blue_platform]
 
     red_score = blue_score = 0
