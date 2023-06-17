@@ -8,7 +8,7 @@ def game():
     running = True
     game_start = False
     pg.mixer.music.set_volume(0.2)
-    pg.mixer.music.play()
+    pg.mixer.music.play(-1)
 
     red_platform = Platform(35, 10, 70, 5, RED)
     blue_platform = Platform(WIDTH - 10 - 35, 10, 70, 5, BLUE)
