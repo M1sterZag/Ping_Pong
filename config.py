@@ -26,9 +26,4 @@ FPS = 60
 hit_sound = pg.mixer.Sound('sounds/hit.mp3')
 score_sound = pg.mixer.Sound('sounds/score.mp3')
 win_sound = pg.mixer.Sound('sounds/win.mp3')
-brue = pg.mixer.Sound('sounds/brue.mp3')
-lucky = pg.mixer.Sound('sounds/povezlo-povezlo.mp3')
-what_hapened = pg.mixer.Sound('sounds/what_hapened.mp3')
 pg.mixer.music.load('sounds/fon_music.mp3')
-
-playlist = [[what_hapened, lucky], [score_sound, brue]]

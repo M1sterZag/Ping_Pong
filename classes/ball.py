@@ -43,7 +43,7 @@ class Ball:
 
     def hit(self):
         self.x_vector *= -1
-        random.choice(playlist[0]).play()
+        hit_sound.play()
 
     def get_Rect(self):
         return self.ball

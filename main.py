@@ -1,7 +1,6 @@
 from classes.platform import Platform
 from classes.ball import Ball
 from config import *
-import random
 
 
 def game():
@@ -51,10 +50,10 @@ def game():
             text_rect = text1.get_rect(center=(WIDTH // 2, HEIGHT // 2))
             screen.blit(text1, text_rect)
             text2 = font_46.render("w/s", True, RED)
-            text_rect = text2.get_rect(center=(WIDTH // 4, HEIGHT // 2 + 45))
+            text_rect = text2.get_rect(center=(WIDTH // 4, HEIGHT // 2 + 50))
             screen.blit(text2, text_rect)
             text3 = font_46.render("up/down", True, BLUE)
-            text_rect = text3.get_rect(center=(WIDTH // 4 * 2.8, HEIGHT // 2 + 45))
+            text_rect = text3.get_rect(center=(WIDTH // 4 * 2.8, HEIGHT // 2 + 50))
             screen.blit(text3, text_rect)
         else:
             if not winner:
@@ -68,10 +67,10 @@ def game():
 
                 if point == -1:
                     red_score += 1
-                    random.choice(playlist[1]).play()
+                    score_sound.play()
                 elif point == 1:
                     blue_score += 1
-                    random.choice(playlist[1]).play()
+                    score_sound.play()
 
                 if point:
                     ball.reset()
@@ -103,11 +102,11 @@ def game():
                     win_sound.play()
 
             else:
-                text = font_46.render(winner_text, True, winner_color)
+                text = font_56.render(winner_text, True, winner_color)
                 rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
                 screen.blit(text, rect)
                 text = font_46.render("Нажмите R для рестарта игры", True, WHITE)
-                rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 45))
+                rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 50))
                 screen.blit(text, rect)
 
         pg.display.update()
