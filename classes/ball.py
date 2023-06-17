@@ -8,7 +8,9 @@ class Ball:
         self.y = y
         self.radius = radius
         self.color = color
+        self.start_speed = speed
         self.speed = speed
+        self.bounce = 0
         self.x_vector = random.choice([-1, 1])
         self.y_vector = random.choice([-1, 1])
         self.ball = pg.draw.circle(screen, self.color, (self.x, self.y), self.radius)
@@ -39,6 +41,8 @@ class Ball:
         self.y = HEIGHT // 2
         self.x_vector = random.choice([-1, 1])
         self.y_vector = random.choice([-1, 1])
+        self.bounce = 0
+        self.speed = self.start_speed
         self.score = 1
 
     def hit(self):

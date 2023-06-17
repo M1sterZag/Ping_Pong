@@ -3,6 +3,18 @@ from classes.ball import Ball
 from config import *
 
 
+def start_config():
+    red_platform = Platform(35, 10, 70, 5, RED)
+    blue_platform = Platform(WIDTH - 10 - 35, 10, 70, 5, BLUE)
+    ball = Ball(WIDTH // 2, HEIGHT // 2, 10, 3, WHITE)
+    platform_list = [red_platform, blue_platform]
+
+    red_score = blue_score = 0
+    red_y_vector = blue_y_vector = 0
+
+    return red_platform, blue_platform, ball, platform_list, red_score, blue_score, red_y_vector, blue_y_vector
+
+
 def game():
     winner = False
     running = True
@@ -10,13 +22,8 @@ def game():
     pg.mixer.music.set_volume(0.2)
     pg.mixer.music.play(-1)
 
-    red_platform = Platform(35, 10, 70, 5, RED)
-    blue_platform = Platform(WIDTH - 10 - 35, 10, 70, 5, BLUE)
-    ball = Ball(WIDTH // 2, HEIGHT // 2, 10, 4, WHITE)
-    platform_list = [red_platform, blue_platform]
-
-    red_score = blue_score = 0
-    red_y_vector = blue_y_vector = 0
+    red_platform, blue_platform, ball, \
+        platform_list, red_score, blue_score, red_y_vector, blue_y_vector = start_config()
 
     while running:
         screen.fill(BLACK)
@@ -36,12 +43,8 @@ def game():
 
         if keys[pg.K_r]:
             if winner:
-                red_platform = Platform(35, 10, 70, 5, RED)
-                blue_platform = Platform(WIDTH - 10 - 35, 10, 70, 5, BLUE)
-                ball = Ball(WIDTH // 2, HEIGHT // 2, 10, 4, WHITE)
-                platform_list = [red_platform, blue_platform]
-                red_score = blue_score = 0
-                red_y_vector = blue_y_vector = 0
+                red_platform, blue_platform, ball, \
+                    platform_list, red_score, blue_score, red_y_vector, blue_y_vector = start_config()
             winner = False
             game_start = True
 
@@ -59,6 +62,10 @@ def game():
             if not winner:
                 for platform in platform_list:
                     if pg.Rect.colliderect(ball.get_Rect(), platform.get_Rect()):
+                        ball.bounce += 1
+                        if ball.bounce == 4:
+                            ball.speed += 1
+                            ball.bounce = 0
                         ball.hit()
 
                 red_platform.update_platform(red_y_vector)
